@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Professional Procurement & Staffing SaaS Design System */
 
 @layer base {
   :root {
@@ -17,26 +15,54 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Professional brand colors - deep blue primary */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 221 83% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Enterprise secondary - warm gray */
+    --secondary: 220 9% 46%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Success and status colors */
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 13% 98%));
+    --gradient-hero: linear-gradient(135deg, hsl(221 83% 53%), hsl(221 83% 65%));
+
+    /* Shadows for depth */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 4px 6px -1px hsl(220 13% 91% / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+
+    /* Professional spacing */
+    --spacing-section: 6rem;
+    --spacing-component: 2rem;
+
+    /* Typography */
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Status colors for candidate pipeline */
+    --status-screening: 45 93% 47%;
+    --status-interview: 221 83% 53%;
+    --status-offer: 142 76% 36%;
+    --status-rejected: 0 84% 60%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +126,61 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-[var(--font-body)];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-[var(--font-heading)];
+  }
+}
+
+@layer components {
+  /* Hero section backgrounds */
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-surface {
+    background: var(--gradient-surface);
+  }
+
+  /* Professional shadows */
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Status indicators */
+  .status-screening {
+    @apply bg-[hsl(var(--status-screening))] text-white;
+  }
+
+  .status-interview {
+    @apply bg-[hsl(var(--status-interview))] text-white;
+  }
+
+  .status-offer {
+    @apply bg-[hsl(var(--status-offer))] text-white;
+  }
+
+  .status-rejected {
+    @apply bg-[hsl(var(--status-rejected))] text-white;
+  }
+
+  /* Professional spacing utilities */
+  .section-spacing {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .component-spacing {
+    margin-bottom: var(--spacing-component);
   }
 }

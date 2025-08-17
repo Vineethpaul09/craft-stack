@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -61,7 +62,31 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				status: {
+					screening: 'hsl(var(--status-screening))',
+					interview: 'hsl(var(--status-interview))',
+					offer: 'hsl(var(--status-offer))',
+					rejected: 'hsl(var(--status-rejected))'
 				}
+			},
+			fontFamily: {
+				heading: 'var(--font-heading)',
+				body: 'var(--font-body)'
+			},
+			spacing: {
+				'section': 'var(--spacing-section)',
+				'component': 'var(--spacing-component)'
+			},
+			boxShadow: {
+				'elegant': 'var(--shadow-elegant)',
+				'card': 'var(--shadow-card)',
+				'glow': 'var(--shadow-glow)'
+			},
+			backgroundImage: {
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-surface': 'var(--gradient-surface)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
