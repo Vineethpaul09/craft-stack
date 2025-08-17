@@ -212,20 +212,25 @@ const Index = () => {
               <Card className="shadow-card">
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
-                    Active Job Postings
-                    <Button variant="ghost" size="sm">View All</Button>
+                    Pipeline Overview
+                    <Button variant="ghost" size="sm" asChild>
+                      <a href="/pipeline">View Pipeline</a>
+                    </Button>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  {mockJobs.filter(job => job.status === 'active').slice(0, 2).map((job) => (
-                    <JobCard
-                      key={job.id}
-                      job={job}
-                      onViewApplications={handleViewApplications}
-                      onEditJob={handleEditJob}
-                      onViewDetails={handleViewDetails}
-                    />
-                  ))}
+                <CardContent>
+                  <div className="text-center py-8">
+                    <div className="text-6xl mb-4">🎯</div>
+                    <h3 className="text-lg font-heading font-semibold mb-2">
+                      Full Kanban Pipeline Ready
+                    </h3>
+                    <p className="text-muted-foreground mb-4">
+                      Complete drag & drop recruitment pipeline with automation, bulk actions, and real-time updates.
+                    </p>
+                    <Button asChild>
+                      <a href="/pipeline">Open Pipeline View</a>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -369,14 +374,16 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <div className="text-center py-12">
-                  <Calendar className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                  <h3 className="text-lg font-medium mb-2">Pipeline View Coming Soon</h3>
-                  <p className="text-muted-foreground">
-                    Visual pipeline management with drag-and-drop functionality will be available here.
+                  <div className="text-6xl mb-4">🎯</div>
+                  <h3 className="text-lg font-heading font-semibold mb-2">
+                    Full Kanban Pipeline Ready
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    Complete drag & drop recruitment pipeline with automation, bulk actions, and real-time updates.
                   </p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Connect Supabase to enable advanced pipeline features and real-time updates.
-                  </p>
+                  <Button asChild>
+                    <a href="/pipeline">Open Pipeline View</a>
+                  </Button>
                 </div>
               </CardContent>
             </Card>
