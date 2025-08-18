@@ -14,13 +14,340 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      app_users: {
+        Row: {
+          auth_uid: string
+          created_at: string | null
+          email: string
+          full_name: string | null
+          id: string
+          roles: string[] | null
+          tenant_id: string
+        }
+        Insert: {
+          auth_uid: string
+          created_at?: string | null
+          email: string
+          full_name?: string | null
+          id?: string
+          roles?: string[] | null
+          tenant_id: string
+        }
+        Update: {
+          auth_uid?: string
+          created_at?: string | null
+          email?: string
+          full_name?: string | null
+          id?: string
+          roles?: string[] | null
+          tenant_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "app_users_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      automation_rules: {
+        Row: {
+          actions: Json | null
+          active: boolean | null
+          conditions: Json | null
+          created_at: string | null
+          created_by: string | null
+          id: string
+          name: string | null
+          tenant_id: string
+          trigger_config: Json | null
+        }
+        Insert: {
+          actions?: Json | null
+          active?: boolean | null
+          conditions?: Json | null
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          name?: string | null
+          tenant_id: string
+          trigger_config?: Json | null
+        }
+        Update: {
+          actions?: Json | null
+          active?: boolean | null
+          conditions?: Json | null
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          name?: string | null
+          tenant_id?: string
+          trigger_config?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "automation_rules_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "app_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "automation_rules_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      candidates: {
+        Row: {
+          assigned_to: string | null
+          created_at: string | null
+          email: string | null
+          id: string
+          job_id: string | null
+          location: string | null
+          metadata: Json | null
+          name: string | null
+          resume_path: string | null
+          score: number | null
+          status: string
+          tenant_id: string
+          title: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          job_id?: string | null
+          location?: string | null
+          metadata?: Json | null
+          name?: string | null
+          resume_path?: string | null
+          score?: number | null
+          status?: string
+          tenant_id: string
+          title?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          assigned_to?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          job_id?: string | null
+          location?: string | null
+          metadata?: Json | null
+          name?: string | null
+          resume_path?: string | null
+          score?: number | null
+          status?: string
+          tenant_id?: string
+          title?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidates_assigned_to_fkey"
+            columns: ["assigned_to"]
+            isOneToOne: false
+            referencedRelation: "app_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidates_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "jobs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "candidates_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      events: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          event_type: string
+          id: string
+          payload: Json | null
+          tenant_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          event_type: string
+          id?: string
+          payload?: Json | null
+          tenant_id: string
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          event_type?: string
+          id?: string
+          payload?: Json | null
+          tenant_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      interviews: {
+        Row: {
+          candidate_id: string
+          created_at: string | null
+          details: Json | null
+          end_at: string | null
+          id: string
+          location: string | null
+          organizer_id: string | null
+          start_at: string | null
+          tenant_id: string
+        }
+        Insert: {
+          candidate_id: string
+          created_at?: string | null
+          details?: Json | null
+          end_at?: string | null
+          id?: string
+          location?: string | null
+          organizer_id?: string | null
+          start_at?: string | null
+          tenant_id: string
+        }
+        Update: {
+          candidate_id?: string
+          created_at?: string | null
+          details?: Json | null
+          end_at?: string | null
+          id?: string
+          location?: string | null
+          organizer_id?: string | null
+          start_at?: string | null
+          tenant_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "interviews_candidate_id_fkey"
+            columns: ["candidate_id"]
+            isOneToOne: false
+            referencedRelation: "candidates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "interviews_organizer_id_fkey"
+            columns: ["organizer_id"]
+            isOneToOne: false
+            referencedRelation: "app_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "interviews_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      jobs: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          id: string
+          status: string | null
+          tenant_id: string
+          title: string
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          status?: string | null
+          tenant_id: string
+          title: string
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          status?: string | null
+          tenant_id?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "jobs_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "app_users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "jobs_tenant_id_fkey"
+            columns: ["tenant_id"]
+            isOneToOne: false
+            referencedRelation: "tenants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tenants: {
+        Row: {
+          created_at: string | null
+          domain: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string | null
+          domain?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string | null
+          domain?: string | null
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      current_auth_uid: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
+      current_tenant_id: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
